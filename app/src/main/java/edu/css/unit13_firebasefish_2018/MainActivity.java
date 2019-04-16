@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("MAIN", "onClick for Delete");
                 Log.d("MAIN", "Delete at position " + positionSelected);
-//                fishDataSource.deleteFish(fishList.get(positionSelected));
+                fishDataSource.deleteFish(fishList.get(positionSelected));
                 fishAdapter.remove( fishList.get(positionSelected) );
                 fishAdapter.notifyDataSetChanged();
             }
