@@ -45,19 +45,6 @@ public class MainActivity extends AppCompatActivity {
         setupDetailButton();
         setupDeleteButton();
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() { //initialized mAuthListener
-           @Override
-           public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                //track the user when they sign in or out using the firebaseAut
-               FirebaseUser user = firebaseAuth.getCurrentUser();
-               if (user == null) {
-                   // User is signed out
-                   Log.d("CSS3334","onAuthStateChanged - User NOT is signed in");
-                   Intent signInIntent = new Intent(getBaseContext(), LoginActivity.class);
-                   startActivity(signInIntent);
-               }
-            }
-        };
     }
 
 
@@ -137,7 +124,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart(){
         super.onStart();
-
+        mAuthListener = new FirebaseAuth.AuthStateListener() { //initialized mAuthListener
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                //track the user when they sign in or out using the firebaseAut
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    // User is signed out
+                    Log.d("CSS3334","onAuthStateChanged - User NOT is signed in");
+                    Intent signInIntent = new Intent(getBaseContext(), LoginActivity.class);
+                    startActivity(signInIntent);
+                }
+            }
+        };
     }
 
     @Override
